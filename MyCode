@@ -4,7 +4,7 @@
     <link href="css/Prac1.css" rel="stylesheet" type= "text/css" />
 </head>
 <body>
-    <h1> How to code 'Hello World' in java</h1>
+    <h1> How to code 'Hello bob' in java</h1>
     <p> Below is the necessary code to write a simple hello World program in java</p>
 
     <div class="code">
