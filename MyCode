@@ -1,8 +1,24 @@
-echo "# EscapeRoom" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/cinnamon73/EscapeRoom.git
-git push -u origin main
-git branch -M main
+<!DOCTYPE html>
+<head>
+    <title> Hello World</title>
+    <link href="css/Prac1.css" rel="stylesheet" type= "text/css" />
+</head>
+<body>
+    <h1> How to code 'Hello World' in java</h1>
+    <p> Below is the necessary code to write a simple hello World program in java</p>
+
+    <div class="code">
+        <p> public class HelloWorld {</p>
+        <p class = "in1tab"> public static void main (String[] args) {</p>
+            <p class="in2tab comment"> 
+                //Prints "HelloWorld" to the terminal window.
+            </p>
+            <p class="in2tab"> System.out.println(&#34; HelloWorld &#34;)</p>
+            <p class="in1tab">}</p>
+            <p>}</p>
+    </div>
+
+    <p> Go to the next example <a href="exampleIf.html"> Here</a></p>
+
+    <p id = "signature"> Content by <span> AmazingJavaExample</span> </p>
+</body>
