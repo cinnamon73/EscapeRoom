@@ -31,7 +31,7 @@
         body{
             margin: 0;
             padding: 0;
-            background-image: url('Image/BackGround1.jpg');
+            background-image: url('BackGround1.jpg');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
