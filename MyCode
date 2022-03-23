@@ -1,7 +1,24 @@
 <!DOCTYPE html>
 <head>
-    <title> Hello World</title>
+    <title> Text Adventure</title>
     <link href="css/Prac1.css" rel="stylesheet" type= "text/css" />
+    <script>
+        var charChosen;
+        function function1() {
+                var x = document.getElementById("button1");
+                x.style.display = "none"; 
+                var y = document.getElementById("button2");
+                y.style.display = "block";
+                charChosen = true;
+            }
+            
+        function function2() {
+                var x = document.getElementById("button1");
+                x.style.display = "none"; 
+                var y = document.getElementById("button2");
+                y.style.display = "none";
+                charChosen = false;
+            }
 </head>
 <body>
     <h1> How to code 'Hello bob' in java</h1>
@@ -16,6 +33,9 @@
             <p class="in2tab"> System.out.println(&#34; HelloWorld &#34;)</p>
             <p class="in1tab">}</p>
             <p>}</p>
+            
+            <button id="button1" onclick="function1()"> Guy with screwdriver</button>
+            <button id="button2" onclick="function2()"> Girl with magnet</button>
     </div>
 
     <p> Go to the next example <a href="exampleIf.html"> Here</a></p>
