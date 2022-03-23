@@ -4,41 +4,36 @@
     <link href="css/Prac1.css" rel="stylesheet" type= "text/css" />
     <script>
         var charChosen;
+        //function for cilcking guy w/ screwdriver - should hide button 1 & 2 and display the starting buttons
+        //also sets charChosen to false so that we can tell which character was picked by the user.
         function function1() {
                 var x = document.getElementById("button1");
                 x.style.display = "none"; 
                 var y = document.getElementById("button2");
-                y.style.display = "block";
+                y.style.display = "none";
+                span1.innerHTML = 'You have chosen Guy with Screwdriver.'
                 charChosen = true;
             }
-            
+        //function for cilcking girl w/ magnet - should hide button 1 & 2 and display the starting buttons
+        //also sets charChosen to false so that we can tell which character was picked by the user.
         function function2() {
                 var x = document.getElementById("button1");
                 x.style.display = "none"; 
                 var y = document.getElementById("button2");
                 y.style.display = "none";
+                span1.innerHTML = 'You have chosen Girl with Magnet'
                 charChosen = false;
             }
+    </script>
 </head>
 <body>
-    <h1> How to code 'Hello bob' in java</h1>
-    <p> Below is the necessary code to write a simple hello World program in java</p>
+    <h1> Escape Room Text Adventure </h1>
+    <p> Description of the room your in</p>
 
     <div class="code">
-        <p> public class HelloWorld {</p>
-        <p class = "in1tab"> public static void main (String[] args) {</p>
-            <p class="in2tab comment"> 
-                //Prints "HelloWorld" to the terminal window.
-            </p>
-            <p class="in2tab"> System.out.println(&#34; HelloWorld &#34;)</p>
-            <p class="in1tab">}</p>
-            <p>}</p>
-            
-            <button id="button1" onclick="function1()"> Guy with screwdriver</button>
-            <button id="button2" onclick="function2()"> Girl with magnet</button>
+        <button id="button1" onclick="function1()"> Guy with screwdriver</button>
+        <button id="button2" onclick="function2()"> Girl with magnet</button>
+        <span id="span1"></span>
+
     </div>
-
-    <p> Go to the next example <a href="exampleIf.html"> Here</a></p>
-
-    <p id = "signature"> Content by <span> AmazingJavaExample</span> </p>
 </body>
