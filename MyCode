@@ -24,9 +24,91 @@
                 span1.innerHTML = 'You have chosen Girl with Magnet'
                 charChosen = false;
             }
+        document.addEventListener('DOMContentLoaded', function() {
+        var button = document.querySelector('#button3')
+        button.addEventListener('click', function() {
+      //      console.log("JUCE");
+            content1.innerHTML = `
+<style>
+
+.NavigationBox{
+    width: 15%;
+    height: 100%;
+    background-color: rgb(161, 0, 0);
+    float: left;
+    overflow: auto;
+    margin-left: auto;
+
+}
+.ImageBox{
+    width: 70%;
+    height: 60%;
+    background-color: rgb(255, 255, 255);
+    float:left;
+    overflow: auto;
+    margin-left: auto;
+}
+.Image{
+    width: 100%;
+    height: 100%;
+}
+.ButtonBox{
+    width: 15%;
+    height: 100%;
+    background-color: rgb(161, 0, 0);
+    float: right;
+    overflow: auto;
+    margin-left: 80%;
+    position:fixed;
+}
+.TextBox{
+    width: 70%;
+    height: 40%;
+    background-color: rgb(211,211,211);
+    float:left;
+    overflow: auto;
+    margin-left: auto;
+
+}
+.button1{
+    text-align: center;
+      width: 150px;
+      height: 100px;
+  margin-bottom: 14%;
+  margin-top: 14%;
+  margin-left: 15%;
+}
+</style>
+
+
+<body>
+
+        <div class="NavigationBox"> 
+
+        </div>
+        <div class = "ImageBox">
+            <img class = "Image" src="Image/Corridor.jpg">
+        </div>
+        <div class = "TextBox ">
+        <p>Youve Entered the hallway</p>
+    </div>
+        <div class = "ButtonBox">
+
+            <Button class="button1"> Option one </Button>
+            <Button class="button1"> Option Two </Button>
+            <Button class="button1"> Option Three </Button>
+            <Button class="button1"> Option Four </Button>
+            </div>
+        </div>
+
+    </div> 
+            `;
+        })
+    })
     </script>
 </head>
 <body>
+    <div id = "content1">
  <style>
         body{
             margin: 0;
@@ -119,7 +201,7 @@
        </div>
        <div class="IntroText">
            <p> Welcome to the EscapeRoom</p>
-           <button> Button </button>
+           <button id = "button3"> Button </button>
        </div>
        
     <h1> Escape Room Text Adventure </h1>
@@ -131,4 +213,6 @@
         <span id="span1"></span>
 
     </div>
+</div>
+</div>
 </body>
