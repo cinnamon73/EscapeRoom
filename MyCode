@@ -95,6 +95,15 @@
   margin-top: 14%;
   margin-left: 15%;
 }
+.button2{
+    text-align: center;
+      width: 150px;
+      height: 100px;
+  margin-bottom: 14%;
+  margin-top: 14%;
+  margin-left: 15%;
+  display: none;
+}
 </style>
 
 
@@ -115,6 +124,10 @@
             <Button id="button5" class="button1" onclick="function5()"> Look at Fish Bowl </Button>
             <Button id="button6" class="button1" onclick="function6()"> Look at Picture </Button>
             <Button id="button7" class="button1" onclick="function7()"> Look at Safe </Button>
+            <Button id="button8" class="button2" onclick=""> Look at Clock </Button>
+            <Button id="button9" class="button2" onclick=""> Look at Fish Bowl </Button>
+            <Button id="button10" class="button2" onclick=""> Look at Picture </Button>
+            <Button id="button11" class="button2" onclick=""> Look at Safe </Button>
             </div>
         </div>
 
