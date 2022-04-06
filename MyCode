@@ -13,8 +13,15 @@
                 y.style.display = "none";
                 span1.innerHTML = 'You have chosen Guy with Screwdriver.'
                 charChosen = true;
-                var z = document.getElementById("button3");
-                z.style.display = "block";
+                b3css.innerHTML = 
+               ` <style>
+            #button3
+            {
+                display: block;
+                margin: auto;
+            }
+        </style>
+                `;
             }
         //function for cilcking girl w/ magnet - should hide button 1 & 2 and display the starting buttons
         //also sets charChosen to false so that we can tell which character was picked by the user.
@@ -25,8 +32,16 @@
                 y.style.display = "none";
                 span1.innerHTML = 'You have chosen Girl with Magnet'
                 charChosen = false;
-                var v = document.getElementById("button3");
-                v.style.display = "block";
+                b3css.innerHTML = 
+                `
+                <style>
+            #button3
+            {
+                display: block;
+                margin: auto;
+            }
+        </style>
+                `;
             }
         function function3() {
             content1.innerHTML = `
@@ -146,6 +161,15 @@
 </head>
 <body>
     <div id = "content1">
+        <div id = "b3css">
+            <style>
+    
+                #button3
+                {
+                    display: none;
+                }
+            </style>
+            </div>
  <style>
         body{
             margin: 0;
@@ -238,7 +262,7 @@
        </div>
        <div class="IntroText">
            <p> Welcome to the EscapeRoom</p>
-           <button id = "button3" hidden onclick="function3()"> Button </button>
+           <button id = "button3" onclick="function3()"> Button </button>
        </div>
        
     <h1> Escape Room Text Adventure </h1>
