@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<html>
 <head>
     <title> Text Adventure</title>
     <link href="css/Prac1.css" rel="stylesheet" type= "text/css" />
@@ -13,6 +13,8 @@
                 y.style.display = "none";
                 span1.innerHTML = 'You have chosen Guy with Screwdriver.'
                 charChosen = true;
+                var z = document.getElementById("button3");
+                z.style.display = "block";
             }
         //function for cilcking girl w/ magnet - should hide button 1 & 2 and display the starting buttons
         //also sets charChosen to false so that we can tell which character was picked by the user.
@@ -23,11 +25,10 @@
                 y.style.display = "none";
                 span1.innerHTML = 'You have chosen Girl with Magnet'
                 charChosen = false;
+                var v = document.getElementById("button3");
+                v.style.display = "block";
             }
-        document.addEventListener('DOMContentLoaded', function() {
-        var button = document.querySelector('#button3')
-        button.addEventListener('click', function() {
-      //      console.log("JUCE");
+        function function3() {
             content1.innerHTML = `
 <style>
 
@@ -103,8 +104,8 @@
 
     </div> 
             `;
-        })
-    })
+        
+    }
     </script>
 </head>
 <body>
@@ -201,7 +202,7 @@
        </div>
        <div class="IntroText">
            <p> Welcome to the EscapeRoom</p>
-           <button id = "button3"> Button </button>
+           <button id = "button3" hidden onclick="function3()"> Button </button>
        </div>
        
     <h1> Escape Room Text Adventure </h1>
@@ -216,3 +217,4 @@
 </div>
 </div>
 </body>
+</html>
