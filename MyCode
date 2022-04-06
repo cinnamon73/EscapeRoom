@@ -30,6 +30,7 @@
             }
         function function3() {
             content1.innerHTML = `
+            
 <style>
 
 .NavigationBox{
@@ -91,21 +92,56 @@
             <img class = "Image" src="Image/Corridor.jpg">
         </div>
         <div class = "TextBox ">
-        <p>Youve Entered the hallway</p>
+        <span id="span2">Youve Entered the hallway</span>
     </div>
         <div class = "ButtonBox">
 
-            <Button class="button1"> Option one </Button>
-            <Button class="button1"> Option Two </Button>
-            <Button class="button1"> Option Three </Button>
-            <Button class="button1"> Option Four </Button>
+            <Button id="button4" class="button1" onclick="function4()"> Look at Clock </Button>
+            <Button id="button5" class="button1" onclick="function5()"> Look at Fish Bowl </Button>
+            <Button id="button6" class="button1" onclick="function6()"> Look at Picture </Button>
+            <Button id="button7" class="button1" onclick="function7()"> Look at Safe </Button>
             </div>
         </div>
 
     </div> 
+             
             `;
         
     }
+    var clockClicked = false;
+    function function4() {
+        span2.innerHTML += `<br> The Clock is broken. The time is frozen at 3 o'clock. `;
+        clockClicked = true;
+    }
+    var fishBowlClicked = false;
+    function function5() {
+        span2.innerHTML += `<br> The Fish Bowl has 4 fish in it. `;
+        fishBowlClicked = true;
+    }
+    var pictureClicked = false;
+    function function6() {
+        span2.innerHTML += `<br> The Picture is of a Family. The family has 7 people in it. `;
+        pictureClicked = true;
+    }
+    var foundItem = false;
+    function function7() {
+        if (charChosen == true) {
+            if (clockClicked && pictureClicked && fishBowlClicked == true) {
+            span2.innerHTML += `<br> You try the code 347. The safe opens and you find a torch.`;
+            foundItem =true;
+            
+            }
+            else {span2.innerHTML += `<br> You try some random combinations but nothing seems to work.`;} 
+        }
+        else {
+            if (clockClicked && pictureClicked && fishBowlClicked == true) {
+            span2.innerHTML += `<br> You try the code 347. The safe opens and you find some string.`;
+            foundItem = true;
+            }
+            else {span2.innerHTML += `<br> You try some random combinations but nothing seems to work.`;}
+        }
+    }
+
     </script>
 </head>
 <body>
