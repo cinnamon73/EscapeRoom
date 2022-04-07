@@ -34,7 +34,14 @@
             v.style.display = "block";
 
         }
+
+        
+
         function function3() {
+
+            
+        var pName = document.getElementById("pName").value;
+        sessionStorage.setItem("pName",pName);
             content1.innerHTML = `
             
 <style>
@@ -263,10 +270,11 @@
         // function that ends that game if the key has been found
         function function11() {
             if (keyFound == true) {
+                var pName = sessionStorage.getItem('pName')
                 span2.innerHTML += ` <br> Congratulations you have escaped.`;
                 function8();
                 score = 300 - timer;
-                span2.innerHTML += `<br> Your score is :` + score + `<br> Your click count is :` + clickCount;
+                span2.innerHTML += `<br>` +pName+` your score is :` + score + `<br> Your click count is :` + clickCount;
                 clearTimeout(myTimer);
 
             }
@@ -420,6 +428,14 @@
                 text-decoration: none;
             }
 
+            .InputName{
+            margin:auto;
+            left: 25%;
+            bottom: 20px;
+            text-align: center;
+            position: absolute;
+            
+            }
 
             .IntroText {
                 text-align: center;
@@ -457,6 +473,9 @@
                 <div class="code">
                     <button id="button1" onclick="function1()"> Guy with screwdriver</button>
                     <button id="button2" onclick="function2()"> Girl with magnet</button>
+
+  <input type ="text" id = "pName" class="InputName">
+                    
                     <span id="span1"></span>
                     <img src="Image/BoyCharacter.jpg" id='characterB' alt="BoyImg" width="140" height="160">
                     <img src="Image/GirlCharacter.jpg" id='characterG' alt="GirlImg" width="140" height="160">
