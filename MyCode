@@ -126,11 +126,13 @@
             <Button id="button4" class="button1" onclick="function4()"> Look at Clock </Button>
             <Button id="button5" class="button1" onclick="function5()"> Look at Fish Bowl </Button>
             <Button id="button6" class="button1" onclick="function6()"> Look at Picture </Button>
-            <Button id="button7" class="button1" onclick="function7()"> Look at Safe </Button>
+            <Button id="button7" class="button1" onclick="function7()"> Inspect Safe </Button>
+            <Button id="button12" class="button1" onclick="function10()"> Look at Remote </Button>
+            <Button id="button13" class="button1" onclick="function11()"> Inspect door </Button>
             <Button id="button8" class="button2" onclick=""> Look at drain </Button>
-            <Button id="button9" class="button2" onclick=""> Look  </Button>
-            <Button id="button10" class="button2" onclick=""> Look at Picture </Button>
-            <Button id="button11" class="button2" onclick=""> Look at Safe </Button>
+            <Button id="button9" class="button2" onclick=""> Look at door </Button>
+            <Button id="button10" class="button2" onclick=""> Look at  </Button>
+            <Button id="button11" class="button2" onclick=""> Look at  </Button>
             </div>
         </div>
 
@@ -160,29 +162,25 @@
         span2.innerHTML += `<br> The Picture is of a Family. The family has 7 people in it. `;
         pictureClicked = true;
     }
-    
+    // variable that records whether or not the player has acquired the item in the safe.
     var foundItem = false;
+    // function that determines whether or not the safe can be opened and then outputs the appropriate message.
+    // Also makes the first 4 option buttons hidden and displays the next 4 option buttons
     function function7() {
         if (charChosen == true) {
             if (clockClicked && pictureClicked && fishBowlClicked == true) {
             span2.innerHTML += `<br> You try the code 347. The safe opens and you find a torch.`;
             foundItem =true;
-            var x = document.getElementById("button4");
-                x.style.display = "none";
-                var z = document.getElementById("button5");
-                z.style.display = "none";
-                var y = document.getElementById("button6");
-                y.style.display = "none";
-                var n = document.getElementById("button7");
-                n.style.display = "none";
-                var u = document.getElementById("button8");
-                u.style.display = "block";
-                var i = document.getElementById("button9");
-                i.style.display = "block";
-                var m = document.getElementById("button10");
-                m.style.display = "block";
-                var l = document.getElementById("button11");
-                l.style.display = "block";
+            const x = document.getElementsByClassName("button1");
+            for (let i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+
+            }
+            const y = document.getElementsByClassName("button2");
+            for (let i = 0; i < y.length; i++) {
+                y[i].style.display = "block";
+
+            }
             }
             else {span2.innerHTML += `<br> You try some random combinations but nothing seems to work.`;} 
         }
@@ -190,26 +188,21 @@
             if (clockClicked && pictureClicked && fishBowlClicked == true) {
             span2.innerHTML += `<br> You try the code 347. The safe opens and you find some string.`;
             foundItem = true;
-            var x = document.getElementById("button4");
-                x.style.display = "none";
-                var z = document.getElementById("button5");
-                z.style.display = "none";
-                var y = document.getElementById("button6");
-                y.style.display = "none";
-                var n = document.getElementById("button7");
-                n.style.display = "none";
-                var u = document.getElementById("button8");
-                u.style.display = "block";
-                var i = document.getElementById("button9");
-                i.style.display = "block";
-                var m = document.getElementById("button10");
-                m.style.display = "block";
-                var l = document.getElementById("button11");
-                l.style.display = "block";
+            const x = document.getElementsByClassName("button1");
+            for (let i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+
+            }
+            const y = document.getElementsByClassName("button2");
+            for (let i = 0; i < y.length; i++) {
+                y[i].style.display = "block";
+
+            }
             }
             else {span2.innerHTML += `<br> You try some random combinations but nothing seems to work.`;}
         }
     }
+    // function that hides all the buttons for when the timer is up.
     function function8() {
             const x = document.getElementsByClassName("button1");
             for (let i = 0; i < x.length; i++) {
@@ -223,7 +216,19 @@
             }
             span2.innerHTML += `<br> Time has ran out.`;
         }
-
+    // function that descibes the remote
+    function function10() {
+        span2.innerHTML +=`<br> You pick up the remote off the desk. You look around the room to see what the remote belongs to but cant see anything. `
+    }
+    // variable that records whether or not the player has found the key
+    var keyFound = false;
+    // function that ends that game if the key has been found
+    function function11() {
+        if (keyFound == true) {
+            span2.innerHTML +=` <br> Congratulations you have escaped.`;
+        }
+        else {span2.innerHTML +=`<br> The door is locked, it requires a key.`;}
+    }
     </script>
 </head>
 <body>
