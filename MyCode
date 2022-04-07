@@ -43,6 +43,8 @@
         </style>
                 `;
             }
+        //function that changes the content of the landing page to the story page
+        //and starts the timer
         function function3() {
             content1.innerHTML = `
             
@@ -135,23 +137,30 @@
     </div> 
              
             `;
-        
+            const myTimeout = setTimeout(function8, 300000);
     }
+    // variable that records whether or not the clock button has been clicked
     var clockClicked = false;
+    //function that describes the clock and sets the clockClicked variable to true
     function function4() {
         span2.innerHTML += `<br> The Clock is broken. The time is frozen at 3 o'clock. `;
         clockClicked = true;
     }
+    // variable that records whether or not the fish bowl button has been clicked
     var fishBowlClicked = false;
+    // function that describes the fishbowl and sets the fishBowlClicked variable to true
     function function5() {
         span2.innerHTML += `<br> The Fish Bowl has 4 fish in it. `;
         fishBowlClicked = true;
     }
+    // variable that records whether or not the picture button has been clicked
     var pictureClicked = false;
+    // function that describes the picture and sets the pictureClicked variable to true
     function function6() {
         span2.innerHTML += `<br> The Picture is of a Family. The family has 7 people in it. `;
         pictureClicked = true;
     }
+    
     var foundItem = false;
     function function7() {
         if (charChosen == true) {
@@ -201,6 +210,19 @@
             else {span2.innerHTML += `<br> You try some random combinations but nothing seems to work.`;}
         }
     }
+    function function8() {
+            const x = document.getElementsByClassName("button1");
+            for (let i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+
+            }
+            const y = document.getElementsByClassName("button2");
+            for (let i = 0; i < y.length; i++) {
+                y[i].style.display = "none";
+
+            }
+            span2.innerHTML += `<br> Time has ran out.`;
+        }
 
     </script>
 </head>
@@ -214,7 +236,6 @@
                 }
             </style>
             </div>
-        </div>
  <style>
         body{
             margin: 0;
