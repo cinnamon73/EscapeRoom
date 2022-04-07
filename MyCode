@@ -1,63 +1,49 @@
 <html>
+
 <head>
     <title> Text Adventure</title>
-    <link href="css/Prac1.css" rel="stylesheet" type= "text/css" />
+    <link href="css/Prac1.css" rel="stylesheet" type="text/css" />
     <script>
         var charChosen;
         //function for cilcking guy w/ screwdriver - should hide button 1 & 2 and display the starting buttons
         //also sets charChosen to false so that we can tell which character was picked by the user.
         function function1() {
-                var x = document.getElementById("button1");
-                x.style.display = "none"; 
-                var y = document.getElementById("button2");
-                y.style.display = "none";
-                span1.innerHTML = 'You have chosen Guy with Screwdriver.'
-                charChosen = true;
-                b3css.innerHTML = 
-               ` <style>
-            #button3
-            {
-                display: block;
-                margin: auto;
-            }
-        </style>
-                `;
-            }
+            var x = document.getElementById("button1");
+            x.style.display = "none";
+            var y = document.getElementById("button2");
+            y.style.display = "none";
+            span1.innerHTML = 'You have chosen Guy with Screwdriver.'
+            charChosen = true;
+            var z = document.getElementById("button3");
+            z.style.display = "block";
+            ;
+        }
         //function for cilcking girl w/ magnet - should hide button 1 & 2 and display the starting buttons
         //also sets charChosen to false so that we can tell which character was picked by the user.
         function function2() {
-                var x = document.getElementById("button1");
-                x.style.display = "none"; 
-                var y = document.getElementById("button2");
-                y.style.display = "none";
-                span1.innerHTML = 'You have chosen Girl with Magnet'
-                charChosen = false;
-                b3css.innerHTML = 
-                `
-                <style>
-            #button3
-            {
-                display: block;
-                margin: auto;
-            }
-        </style>
-                `;
-            }
-        //function that changes the content of the landing page to the story page
-        //and starts the timer
+            var x = document.getElementById("button1");
+            x.style.display = "none";
+            var y = document.getElementById("button2");
+            y.style.display = "none";
+            span1.innerHTML = 'You have chosen Girl with Magnet'
+            charChosen = false;
+            var v = document.getElementById("button3");
+            v.style.display = "block";
+
+        }
         function function3() {
             content1.innerHTML = `
             
 <style>
-
 .NavigationBox{
+    text-align: center;
+            vertical-align: middle;
     width: 15%;
     height: 100%;
     background-color: rgb(161, 0, 0);
     float: left;
     overflow: auto;
     margin-left: auto;
-
 }
 .ImageBox{
     width: 70%;
@@ -87,16 +73,14 @@
     float:left;
     overflow: auto;
     margin-left: auto;
-
 }
 .button1{
     text-align: center;
-    width: 150px;
-    height: 100px;
-    margin-bottom: 14%;
-    margin-top: 14%;
-    margin-left: 15%;
-    display: block;
+      width: 150px;
+      height: 100px;
+  margin-bottom: 14%;
+  margin-top: 14%;
+  margin-left: 15%;
 }
 .button2{
     text-align: center;
@@ -108,21 +92,23 @@
     display: none;
 }
 </style>
-
-
 <body>
-
         <div class="NavigationBox"> 
+            <h2> Character Info </h2>
+            <span id = "spanimagechar"> <img class = "Image"></span>
+            <h2> Inventory </h2> 
+            <span id = "spanitem"> </span>
+            <span id = "spanitem2"> </span>
 
         </div>
         <div class = "ImageBox">
-            <img class = "Image" src="Image/Corridor.jpg">
+            <span id = "spanimage"> <img class = "Image" src="Image/Corridor.jpg"></span>
         </div>
         <div class = "TextBox ">
         <span id="span2">Youve Entered the hallway</span>
     </div>
         <div class = "ButtonBox">
-
+            <button id="back" onclick="function9()"> BACK</button>
             <Button id="button4" class="button1" onclick="function4()"> Look at Clock </Button>
             <Button id="button5" class="button1" onclick="function5()"> Look at Fish Bowl </Button>
             <Button id="button6" class="button1" onclick="function6()"> Look at Picture </Button>
@@ -135,75 +121,88 @@
             <Button id="button11" class="button2" onclick=""> Look at  </Button>
             </div>
         </div>
-
     </div> 
-             
-            `;
+                  `
+            //uses a variable to display which character you've choosen and displays it
+            if (charChosen == true) {
+                spanimagechar.innerHTML = '<img src="Image/BoyCharater.png" alt="BoyImg" width="140" height="160">';
+                spanitem.innerHTML = '<img src="Image/Screwdriver.png" alt="Screwdriver" width="50" height="60">';
+            }
+            if (charChosen == false) {
+                spanimagechar.innerHTML = '<img src="Image/GirlCharacter.png" alt="GirlImg" width="140" height="160">';
+                spanitem.innerHTML = '<img src="Image/magnet.jpg" alt="magnet" width="50" height="60">';
+            }
+            ;
             const myTimeout = setTimeout(function8, 300000);
-    }
-    // variable that records whether or not the clock button has been clicked
-    var clockClicked = false;
-    //function that describes the clock and sets the clockClicked variable to true
-    function function4() {
-        span2.innerHTML += `<br> The Clock is broken. The time is frozen at 3 o'clock. `;
-        clockClicked = true;
-    }
-    // variable that records whether or not the fish bowl button has been clicked
-    var fishBowlClicked = false;
-    // function that describes the fishbowl and sets the fishBowlClicked variable to true
-    function function5() {
-        span2.innerHTML += `<br> The Fish Bowl has 4 fish in it. `;
-        fishBowlClicked = true;
-    }
-    // variable that records whether or not the picture button has been clicked
-    var pictureClicked = false;
-    // function that describes the picture and sets the pictureClicked variable to true
-    function function6() {
-        span2.innerHTML += `<br> The Picture is of a Family. The family has 7 people in it. `;
-        pictureClicked = true;
-    }
-    // variable that records whether or not the player has acquired the item in the safe.
-    var foundItem = false;
-    // function that determines whether or not the safe can be opened and then outputs the appropriate message.
-    // Also makes the first 4 option buttons hidden and displays the next 4 option buttons
-    function function7() {
-        if (charChosen == true) {
-            if (clockClicked && pictureClicked && fishBowlClicked == true) {
-            span2.innerHTML += `<br> You try the code 347. The safe opens and you find a torch.`;
-            foundItem =true;
-            const x = document.getElementsByClassName("button1");
-            for (let i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-
-            }
-            const y = document.getElementsByClassName("button2");
-            for (let i = 0; i < y.length; i++) {
-                y[i].style.display = "block";
-
-            }
-            }
-            else {span2.innerHTML += `<br> You try some random combinations but nothing seems to work.`;} 
         }
-        else {
-            if (clockClicked && pictureClicked && fishBowlClicked == true) {
-            span2.innerHTML += `<br> You try the code 347. The safe opens and you find some string.`;
-            foundItem = true;
-            const x = document.getElementsByClassName("button1");
-            for (let i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-
-            }
-            const y = document.getElementsByClassName("button2");
-            for (let i = 0; i < y.length; i++) {
-                y[i].style.display = "block";
-
-            }
-            }
-            else {span2.innerHTML += `<br> You try some random combinations but nothing seems to work.`;}
+        // variable that records whether or not the clock button has been clicked
+        var clockClicked = false;
+        //function that describes the clock and sets the clockClicked variable to true
+        function function4() {
+            span2.innerHTML += `<br> The Clock is broken. The time is frozen at 3 o'clock. `;
+            spanimage.innerHTML = '<img class = "Image" src="Image/Clock.jpg">';
+            clockClicked = true;
         }
-    }
-    // function that hides all the buttons for when the timer is up.
-    function function8() {
+        // variable that records whether or not the fish bowl button has been clicked
+        var fishBowlClicked = false;
+        // function that describes the fishbowl and sets the fishBowlClicked variable to true
+        function function5() {
+            span2.innerHTML += `<br> The Fish Bowl has 4 fish in it. `;
+            spanimage.innerHTML = '<img class = "Image" src="Image/FishTank.jpg">';
+            fishBowlClicked = true;
+        }
+        // variable that records whether or not the picture button has been clicked
+        var pictureClicked = false;
+        // function that describes the picture and sets the pictureClicked variable to true
+        function function6() {
+            span2.innerHTML += `<br> The Picture is of a Family. The family has 7 people in it. `;
+            spanimage.innerHTML = '<img class = "Image" src="Image/Picture.png">';
+            pictureClicked = true;
+        }
+        // variable that records whether or not the player has acquired the item in the safe.
+        var foundItem = false;
+        // function that determines whether or not the safe can be opened and then outputs the appropriate message.
+        // Also makes the first 4 option buttons hidden and displays the next 4 option buttons
+        function function7() {
+            if (charChosen == true) {
+                if (clockClicked && pictureClicked && fishBowlClicked == true) {
+                    span2.innerHTML += `<br> You try the code 347. The safe opens and you find a torch.`;
+                    spanitem2.innerHTML = '<img src="Image/torch.jpg" alt="torch" width="50" height="60">';
+                    foundItem = true;
+                    const x = document.getElementsByClassName("button1");
+                    for (let i = 0; i < x.length; i++) {
+                        x[i].style.display = "none";
+
+                    }
+                    const y = document.getElementsByClassName("button2");
+                    for (let i = 0; i < y.length; i++) {
+                        y[i].style.display = "block";
+
+                    }
+                }
+                else { span2.innerHTML += `<br> You try some random combinations but nothing seems to work.`; }
+            }
+            else {
+                if (clockClicked && pictureClicked && fishBowlClicked == true) {
+                    span2.innerHTML += `<br> You try the code 347. The safe opens and you find some string.`;
+                    spanitem2.innerHTML = '<img src="Image/string.jpg" alt="string" width="50" height="60">';
+                    foundItem = true;
+                    const x = document.getElementsByClassName("button1");
+                    for (let i = 0; i < x.length; i++) {
+                        x[i].style.display = "none";
+
+                    }
+                    const y = document.getElementsByClassName("button2");
+                    for (let i = 0; i < y.length; i++) {
+                        y[i].style.display = "block";
+
+                    }
+                }
+                else { span2.innerHTML += `<br> You try some random combinations but nothing seems to work.`; }
+            }
+        }
+        // function that hides all the buttons for when the timer is up.
+        function function8() {
             const x = document.getElementsByClassName("button1");
             for (let i = 0; i < x.length; i++) {
                 x[i].style.display = "none";
@@ -216,8 +215,11 @@
             }
             span2.innerHTML += `<br> Time has ran out.`;
         }
-    // function that descibes the remote
-    function function10() {
+        
+
+        
+// function that descibes the remote
+function function10() {
         span2.innerHTML +=`<br> You pick up the remote off the desk. You look around the room to see what the remote belongs to but cant see anything. `
     }
     // variable that records whether or not the player has found the key
@@ -229,123 +231,152 @@
         }
         else {span2.innerHTML +=`<br> The door is locked, it requires a key.`;}
     }
+
+    //This button will go back a page for the user
+    function function9() {
+
+var p = document.getElementById("button5");
+var m = document.getElementById("button9");
+if (p.style.display == 'block') {
+    span2.innerHTML += '<br> You cannot go any further back!';
+}
+else if (m.style.display == 'block') {
+    const x = document.getElementsByClassName("button2");
+    for (let i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    const y = document.getElementsByClassName("button1");
+    for (let i = 0; i < y.length; i++) {
+        y[i].style.display = "block";
+
+    }
+}
+
+}
     </script>
 </head>
+
 <body>
-    <div id = "content1">
-        <div id = "b3css">
+    <div id="content1">
+        <div id="b3css">
             <style>
-                #button3
-                {
+                #button3 {
                     display: none;
                 }
             </style>
-            </div>
- <style>
-        body{
-            margin: 0;
-            padding: 0;
-            background-image: url('BackGround1.jpg');
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
-        }
-        
-        .header{
-            width: 100%;
-            height: 80px;
-            display: block;
-            background-color: rgb(54, 54, 59);
-        }
-        .Inner_header{
-            width: 1000px;
-            height: 100%;
-            display: block;
-            margin: 0 auto;
-            background-color: rgb(54, 54, 59);
-        }
-        .logo_container{
-            height: 100%;
-            display: table;
-            float: left;
-        }
-        .logo_container h1{
-            color: white;
-            height: 100%;
-            display: table-cell;
-            vertical-align: middle;
-            font-family: 'Montserrat';
-            font-size: 32px;
-        }
-        .navigation{
-            float: right;
-            height: 100px;
-        }
-        .navigation a{
-            height: 100px;
-            display: table;
-            float: left;
-            padding: 0px 20px;
-        }
-        .navigation a li{
-            display: table-cell;
-            vertical-align: middle;
-            height: 100%;
-            color: white;
-            font-family: 'Montserrat';
-            font-size: 16px;
-        }
-        .radio{
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            text-decoration: none;
-        }
-        
-        
-        .IntroText{
-            text-align: center;
-            vertical-align: middle;
-            position: relative;
-            width: 320px; 
-            height: 320px;
-            background: rgba(51, 49, 49, 0.507);
-            color: #fff;
-            top: 50%;
-            left: 50%;
-            position: absolute;
-            transform: translate(-50%, -50%);
-            box-sizing: border-box;
-        
-        }
+        </div>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                background-image: url('image/BackGround1.jpg');
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+            }
+
+            .header {
+                width: 100%;
+                height: 80px;
+                display: block;
+                background-color: rgb(54, 54, 59);
+            }
+
+            .Inner_header {
+                width: 1000px;
+                height: 100%;
+                display: block;
+                margin: 0 auto;
+                background-color: rgb(54, 54, 59);
+            }
+
+            .logo_container {
+                height: 100%;
+                display: table;
+                float: left;
+            }
+
+            .logo_container h1 {
+                color: white;
+                height: 100%;
+                display: table-cell;
+                vertical-align: middle;
+                font-family: 'Montserrat';
+                font-size: 32px;
+            }
+
+            .navigation {
+                float: right;
+                height: 100px;
+            }
+
+            .navigation a {
+                height: 100px;
+                display: table;
+                float: left;
+                padding: 0px 20px;
+            }
+
+            .navigation a li {
+                display: table-cell;
+                vertical-align: middle;
+                height: 100%;
+                color: white;
+                font-family: 'Montserrat';
+                font-size: 16px;
+            }
+
+            .radio {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                text-decoration: none;
+            }
+
+
+            .IntroText {
+                text-align: center;
+                vertical-align: middle;
+                position: relative;
+                width: 320px;
+                height: 320px;
+                background: rgba(51, 49, 49, 0.507);
+                color: #fff;
+                top: 50%;
+                left: 50%;
+                position: absolute;
+                transform: translate(-50%, -50%);
+                box-sizing: border-box;
+
+            }
         </style>
         <div class="Wrapper">
-           <div class="header">
-               <div class = "Inner_header">
-                   <div class="logo_container">
-                       <h1> EscapeRoom </h1>
-                   </div> 
-                   <ul class="navigation">
-                       <a><li>Home</li></a>
-                     
-                   </ul>
-           </div>
-       </div>
-       <div class="IntroText">
-           <p> Welcome to the EscapeRoom</p>
-           <button id = "button3" onclick="function3()"> Button </button>
-       </div>
-       
-    <h1> Escape Room Text Adventure </h1>
-    <p> Description of the room your in</p>
+            <div class="header">
+                <div class="Inner_header">
+                    <div class="logo_container">
+                        <h1> EscapeRoom </h1>
+                    </div>
+                    <ul class="navigation">
+                        <a>
+                            <li>Home</li>
+                        </a>
 
-    <div class="code">
-        <button id="button1" onclick="function1()"> Guy with screwdriver</button>
-        <button id="button2" onclick="function2()"> Girl with magnet</button>
-        <span id="span1"></span>
-
+                    </ul>
+                </div>
+            </div>
+            <div class="IntroText">
+                <h2> Welcome to the EscapeRoom</h2>
+                <button id="button3" style="margin: auto" onclick="function3()"> Button </button>
+                <div class="code">
+                    <button id="button1" onclick="function1()"> Guy with screwdriver</button>
+                    <button id="button2" onclick="function2()"> Girl with magnet</button>
+                    <span id="span1"></span>
+                    <img src="Image/BoyCharater.png" id='characterB' alt="BoyImg" width="140" height="160">
+                    <img src="Image/GirlCharacter.png" id='characterG' alt="GirlImg" width="140" height="160">
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-</div>
 </body>
+
 </html>
