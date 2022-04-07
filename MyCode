@@ -36,7 +36,6 @@
             v.style.display = "block";
             var q = document.getElementById("pName");
             q.style.display = "block";
-
         }
 
         
@@ -49,6 +48,10 @@
             content1.innerHTML = `
             
 <style>
+    body {
+                margin: 0;
+                padding: 0;
+            }
 .NavigationBox{
     text-align: center;
             vertical-align: middle;
@@ -111,10 +114,11 @@
         <div class="NavigationBox"> 
             <h2> Character Info </h2>
             <span id = "spanimagechar"> <img class = "Image"></span>
+            <span id = "spanname"> </span>
             <h2> Inventory </h2> 
             <span id = "spanitem"> </span>
             <span id = "spanitem2"> </span>
-
+            
         </div>
         <div class = "ImageBox">
             <span id = "spanimage"> <img class = "Image" src="Image/Corridor.jpg"></span>
@@ -150,7 +154,9 @@
                 spanimagechar.innerHTML = '<img src="Image/GirlCharacter.jpg" alt="GirlImg" width="140" height="160">';
                 spanitem.innerHTML = '<img src="Image/magnet.jpg" alt="magnet" width="50" height="60">';
             }
-            ;
+            var pName = sessionStorage.getItem('pName');
+            spanname.innerHTML = '<p>' +pName+ '</p>';
+
             const myTimeout = setTimeout(function8, 300000);
             const myTimer = setInterval(function12, 1000);
         }
@@ -159,7 +165,7 @@
         //function that describes the clock and sets the clockClicked variable to true
         function function4() {
             span2.innerHTML += `<br> The Clock is broken. The time is frozen at 3 o'clock. `;
-            spanimage.innerHTML = '<img class = "Image" src="Image/Clock.jpg">';
+            spanimage.innerHTML = '<img class = "Image" src="Image/Clock.jpg" alt="clock">';
             clockClicked = true;
             clickCount += 1;
         }
@@ -168,7 +174,7 @@
         // function that describes the fishbowl and sets the fishBowlClicked variable to true
         function function5() {
             span2.innerHTML += `<br> The Fish Bowl has 4 fish in it. `;
-            spanimage.innerHTML = '<img class = "Image" src="Image/FishTank.jpg">';
+            spanimage.innerHTML = '<img class = "Image" src="Image/FishTank.jpg" alt="fishtankimg">';
             fishBowlClicked = true;
             clickCount += 1;
         }
@@ -177,7 +183,7 @@
         // function that describes the picture and sets the pictureClicked variable to true
         function function6() {
             span2.innerHTML += `<br> The Picture is of a Family. The family has 7 people in it. `;
-            spanimage.innerHTML = '<img class = "Image" src="Image/Picture.png">';
+            spanimage.innerHTML = '<img class = "Image" src="Image/Picture.png" alt = "pictureimg">';
             pictureClicked = true;
             clickCount += 1;
         }
@@ -190,7 +196,7 @@
                 if (clockClicked && pictureClicked && fishBowlClicked == true) {
                     if (foundItem == false) {
                         span2.innerHTML += `<br> You try the code 347. The safe opens and you find a torch. The torch seems to be out of battery.`;
-                        spanimage.innerHTML = '<img class = "Image" src="Image/Safeopen.jpg">';
+                        spanimage.innerHTML = '<img class = "Image" src="Image/Safeopen.jpg" alt ="safeopenimg">';
                         spanitem2.innerHTML = '<img src="Image/torch.jpg" alt="torch" width="50" height="60">';
                         foundItem = true;
                     }
@@ -207,15 +213,15 @@
                 }
                 else {
                     span2.innerHTML += `<br> You try some random combinations but nothing seems to work.`;
-                    spanimage.innerHTML = '<img class = "Image" src="Image/Safe.jpg">';
+                    spanimage.innerHTML = '<img class = "Image" src="Image/Safe.jpg" alt = "safeclosedimg">';
                 }
             }
             else {
                 if (clockClicked && pictureClicked && fishBowlClicked == true) {
                     if (foundItem == false) {
                         span2.innerHTML += `<br> You try the code 347. The safe opens and you find some string.`;
-                        spanimage.innerHTML = '<img class = "Image" src="Image/Safeopen.jpeg">';
-                        spanitem2.innerHTML = '<img src="Image/string.jpg" alt="string" width="50" height="60">';
+                        spanimage.innerHTML = '<img class = "Image" src="Image/Safeopen.jpeg" alt="safeopenimg">';
+                        spanitem2.innerHTML = '<img src="Image/string.jpg" alt="stringimg" width="50" height="60">';
                         foundItem = true;
                     }
 
@@ -232,7 +238,7 @@
                 }
                 else {
                     span2.innerHTML += `<br> You try some random combinations but nothing seems to work.`;
-                    spanimage.innerHTML = '<img class = "Image" src="Image/Safe.jpg">';
+                    spanimage.innerHTML = '<img class = "Image" src="Image/Safe.jpg" alt="Safeclosedimg">';
                 }
             }
             clickCount += 1;
@@ -250,6 +256,7 @@
 
             }
             span2.innerHTML += `<br> Game Over`;
+            spanimage.innerHTML = '<img class = "Image" src="Image/dead.jpg" alt = "deadimg">';
         }
 
 
@@ -259,12 +266,12 @@
         function function10() {
             if (charChosen == true && foundItem == true) {
                 span2.innerHTML += `<br> You pick up the remote off the desk. You take the batteries out of it and luckily they fit your torch. `;
-                spanimage.innerHTML = '<img class = "Image" src="Image/remote.jpg">';
+                spanimage.innerHTML = '<img class = "Image" src="Image/remote.jpg alt="remoteimg">';
                 batteriesInTorch = true;
             }
             else {
                 span2.innerHTML += `<br> You pick up the remote off the desk. You look around the room to see what the remote belongs to but cant see anything. `;
-                spanimage.innerHTML = '<img class = "Image" src="Image/remote.jpg">';
+                spanimage.innerHTML = '<img class = "Image" src="Image/remote.jpg" alt="remoteimg">';
             }
             clickCount += 1;
 
@@ -274,9 +281,10 @@
         // function that ends that game if the key has been found
         function function11() {
             if (keyFound == true) {
-                var pName = sessionStorage.getItem('pName')
+                var pName = sessionStorage.getItem('pName');
                 span2.innerHTML += ` <br> Congratulations you have escaped.`;
                 function8();
+                spanimage.innerHTML = '<img class = "Image" src="Image/Win.png" alt = "winimg">';
                 score = 300 - timer;
                 span2.innerHTML += `<br>` +pName+` your score is :` + score + `<br> Your click count is :` + clickCount;
                 clearTimeout(myTimer);
@@ -320,14 +328,17 @@
         function function13() {
             if (batteriesInTorch == true) {
                 span2.innerHTML += `<br> You shine the torch down the drain and can see a key at the bottom. You then use the screwdriver to lift up the drain cover and reach in and grab the key.`;
+                spanimage.innerHTML = '<img class = "Image" src="Image/Drain.jpg" alt = "Drainimg">';
                 keyFound = true;
             }
             else if (itemsCombined == true) {
                 span2.innerHTML += `<br> You decide to lower the magnet into the drain using the string. You feel it get heavier so you pull it out and there is a key on the end of it.`;
+                spanimage.innerHTML = '<img class = "Image" src="Image/Drain.jpg" alt = "Drainimg">';
                 keyFound = true;
             }
             else {
                 span2.innerHTML += `<br> There is a drain in the floor. Its too dark to see the bottom.`;
+                spanimage.innerHTML = '<img class = "Image" src="Image/Drain.jpg" alt = "Drainimg">';
             }
             clickCount += 1;
         }
@@ -344,6 +355,7 @@
         }
         function function15() {
             span2.innerHTML += `<br> You enter the door. You see nothing around you and the door closes behind. The walls start closing in!`;
+            spanimage.innerHTML = '<img class = "Image" src="Image/BadEnd.jpg" alt = "badendimg">';
             function8();
             clickCount += 1;
             score = 0;
