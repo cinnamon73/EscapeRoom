@@ -34,8 +34,8 @@
             charChosen = false;
             var v = document.getElementById("button3");
             v.style.display = "block";
-            var j = document.getElementById("pName");
-            j.style.display = "block";
+            var q = document.getElementById("pName");
+            q.style.display = "block";
 
         }
 
