@@ -6,6 +6,7 @@
     <script>
         var charChosen;
         var timer = 0;
+        var score = 0;
         //function for cilcking guy w/ screwdriver - should hide button 1 & 2 and display the starting buttons
         //also sets charChosen to false so that we can tell which character was picked by the user.
         function function1() {
@@ -123,7 +124,7 @@
             <Button id="button8" class="button2" onclick="function13()"> Look at drain </Button>
             <Button id="button9" class="button2" onclick="function11()"> Look at door </Button>
             <Button id="button10" class="button2" onclick="function14()"> Combine Items  </Button>
-            <Button id="button11" class="button2" onclick=""> Look at  </Button>
+            <Button id="button11" class="button2" onclick="function15()"> Enter door with pentagram symbol </Button>
             </div>
         </div>
     </div> 
@@ -196,7 +197,7 @@
             }
             else {
                 if (clockClicked && pictureClicked && fishBowlClicked == true) {
-                    if (foundItem ==false) {
+                    if (foundItem == false) {
                         span2.innerHTML += `<br> You try the code 347. The safe opens and you find some string.`;
                         spanimage.innerHTML = '<img class = "Image" src="Image/Safeopen.jpeg">';
                         spanitem2.innerHTML = '<img src="Image/string.jpg" alt="string" width="50" height="60">';
@@ -241,15 +242,15 @@
         // function that descibes the remote
         function function10() {
             if (charChosen == true && foundItem == true) {
-            span2.innerHTML += `<br> You pick up the remote off the desk. You take the batteries out of it and luckily they fit your torch. `;
-            spanimage.innerHTML = '<img class = "Image" src="Image/remote.jpg">';
-            batteriesInTorch = true;
+                span2.innerHTML += `<br> You pick up the remote off the desk. You take the batteries out of it and luckily they fit your torch. `;
+                spanimage.innerHTML = '<img class = "Image" src="Image/remote.jpg">';
+                batteriesInTorch = true;
             }
             else {
-            span2.innerHTML += `<br> You pick up the remote off the desk. You look around the room to see what the remote belongs to but cant see anything. `;
-            spanimage.innerHTML = '<img class = "Image" src="Image/remote.jpg">'; 
+                span2.innerHTML += `<br> You pick up the remote off the desk. You look around the room to see what the remote belongs to but cant see anything. `;
+                spanimage.innerHTML = '<img class = "Image" src="Image/remote.jpg">';
             }
-            
+
         }
         // variable that records whether or not the player has found the key
         var keyFound = false;
@@ -258,8 +259,8 @@
             if (keyFound == true) {
                 span2.innerHTML += ` <br> Congratulations you have escaped.`;
                 function8();
-                var score = 300-timer;
-                span2.innerHTML +=`<br> Your score is :` + score ;
+                score = 300 - timer;
+                span2.innerHTML += `<br> Your score is :` + score;
                 clearTimeout(myTimer);
 
             }
@@ -313,11 +314,19 @@
         function function14() {
             if (charChosen == false && itemsCombined == false) {
                 span2.innerHTML += `<br> You tie the magnet to the string.`;
-                itemsCombined =true;
+                itemsCombined = true;
             }
             else {
                 span2.innerHTML += `<br> You cannot combine any of your items.`;
             }
+        }
+        function function15() {
+            span2.innerHTML += `<br> You enter the door. You see nothing around you and the door closes behind. The walls start closing in!`;
+            function8();
+            score = 0;
+            span2.innerHTML += `<br> Your score is :` + score;
+            clearTimeout(myTimer);
+
         }
     </script>
 </head>
@@ -424,7 +433,7 @@
                     </div>
                     <ul class="navigation">
                         <a>
-                            <li>Home</li>
+                            <li>Home Page</li>
                         </a>
 
                     </ul>
@@ -432,7 +441,7 @@
             </div>
             <div class="IntroText">
                 <h2> Welcome to the EscapeRoom</h2>
-                <button id="button3" style="margin: auto" onclick="function3()"> Button </button>
+                <button id="button3" style="margin: auto" onclick="function3()"> START! </button>
                 <div class="code">
                     <button id="button1" onclick="function1()"> Guy with screwdriver</button>
                     <button id="button2" onclick="function2()"> Girl with magnet</button>
