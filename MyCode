@@ -5,6 +5,7 @@
     <link href="css/Prac1.css" rel="stylesheet" type="text/css" />
     <script>
         var charChosen;
+        var timer = 0;
         //function for cilcking guy w/ screwdriver - should hide button 1 & 2 and display the starting buttons
         //also sets charChosen to false so that we can tell which character was picked by the user.
         function function1() {
@@ -81,6 +82,7 @@
   margin-bottom: 14%;
   margin-top: 14%;
   margin-left: 15%;
+  display: block;
 }
 .button2{
     text-align: center;
@@ -105,7 +107,10 @@
             <span id = "spanimage"> <img class = "Image" src="Image/Corridor.jpg"></span>
         </div>
         <div class = "TextBox ">
-        <span id="span2">Youve Entered the hallway</span>
+        <span id="span2">You wake up in a dimly lit room, the air is moist and the wooden floor is rotting and damp. 
+            You stand up and take your bearings.<br> You look around the room, it looks like an office which has been abandoned for years. 
+            There’s a desk with a large fish tank,<br> a clock, a drain in the centre of the room, a metal safe, a photo of a family on the wall,  
+            remote on the desk and most importantly a large wooden door.</span>
     </div>
         <div class = "ButtonBox">
             <button id="back" onclick="function9()"> BACK</button>
@@ -125,15 +130,16 @@
                   `
             //uses a variable to display which character you've choosen and displays it
             if (charChosen == true) {
-                spanimagechar.innerHTML = '<img src="Image/BoyCharater.png" alt="BoyImg" width="140" height="160">';
+                spanimagechar.innerHTML = '<img src="Image/BoyCharacter.jpg" alt="BoyImg" width="140" height="160">';
                 spanitem.innerHTML = '<img src="Image/Screwdriver.png" alt="Screwdriver" width="50" height="60">';
             }
             if (charChosen == false) {
-                spanimagechar.innerHTML = '<img src="Image/GirlCharacter.png" alt="GirlImg" width="140" height="160">';
+                spanimagechar.innerHTML = '<img src="Image/GirlCharacter.jpg" alt="GirlImg" width="140" height="160">';
                 spanitem.innerHTML = '<img src="Image/magnet.jpg" alt="magnet" width="50" height="60">';
             }
             ;
             const myTimeout = setTimeout(function8, 300000);
+            const myTimer = setInterval(function12, 1000);
         }
         // variable that records whether or not the clock button has been clicked
         var clockClicked = false;
@@ -167,6 +173,7 @@
             if (charChosen == true) {
                 if (clockClicked && pictureClicked && fishBowlClicked == true) {
                     span2.innerHTML += `<br> You try the code 347. The safe opens and you find a torch.`;
+                    spanimage.innerHTML = '<img class = "Image" src="Image/Safeopen.jpg">';
                     spanitem2.innerHTML = '<img src="Image/torch.jpg" alt="torch" width="50" height="60">';
                     foundItem = true;
                     const x = document.getElementsByClassName("button1");
@@ -180,11 +187,15 @@
 
                     }
                 }
-                else { span2.innerHTML += `<br> You try some random combinations but nothing seems to work.`; }
+                else {
+                    span2.innerHTML += `<br> You try some random combinations but nothing seems to work.`;
+                    spanimage.innerHTML = '<img class = "Image" src="Image/Safe.jpg">';
+                }
             }
             else {
                 if (clockClicked && pictureClicked && fishBowlClicked == true) {
                     span2.innerHTML += `<br> You try the code 347. The safe opens and you find some string.`;
+                    spanimage.innerHTML = '<img class = "Image" src="Image/Safeopen.jpeg">';
                     spanitem2.innerHTML = '<img src="Image/string.jpg" alt="string" width="50" height="60">';
                     foundItem = true;
                     const x = document.getElementsByClassName("button1");
@@ -198,7 +209,10 @@
 
                     }
                 }
-                else { span2.innerHTML += `<br> You try some random combinations but nothing seems to work.`; }
+                else {
+                    span2.innerHTML += `<br> You try some random combinations but nothing seems to work.`;
+                    spanimage.innerHTML = '<img class = "Image" src="Image/Safe.jpg">';
+                }
             }
         }
         // function that hides all the buttons for when the timer is up.
@@ -215,44 +229,53 @@
             }
             span2.innerHTML += `<br> Time has ran out.`;
         }
-        
 
-        
-// function that descibes the remote
-function function10() {
-        span2.innerHTML +=`<br> You pick up the remote off the desk. You look around the room to see what the remote belongs to but cant see anything. `
-    }
-    // variable that records whether or not the player has found the key
-    var keyFound = false;
-    // function that ends that game if the key has been found
-    function function11() {
-        if (keyFound == true) {
-            span2.innerHTML +=` <br> Congratulations you have escaped.`;
+
+
+        // function that descibes the remote
+        function function10() {
+            span2.innerHTML += `<br> You pick up the remote off the desk. You look around the room to see what the remote belongs to but cant see anything. `
+            spanimage.innerHTML = '<img class = "Image" src="Image/remote.jpg">';
         }
-        else {span2.innerHTML +=`<br> The door is locked, it requires a key.`;}
-    }
+        // variable that records whether or not the player has found the key
+        var keyFound = false;
+        // function that ends that game if the key has been found
+        function function11() {
+            if (keyFound == true) {
+                span2.innerHTML += ` <br> Congratulations you have escaped.`;
+            }
 
-    //This button will go back a page for the user
-    function function9() {
+            else {
+                span2.innerHTML += `<br> The door is locked, it requires a key.`;
+                spanimage.innerHTML = '<img class = "Image" src="Image/Door.jpg">';
+            }
+        }
 
-var p = document.getElementById("button5");
-var m = document.getElementById("button9");
-if (p.style.display == 'block') {
-    span2.innerHTML += '<br> You cannot go any further back!';
-}
-else if (m.style.display == 'block') {
-    const x = document.getElementsByClassName("button2");
-    for (let i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
-    }
-    const y = document.getElementsByClassName("button1");
-    for (let i = 0; i < y.length; i++) {
-        y[i].style.display = "block";
+        //This button will go back a page for the user
+        function function9() {
 
-    }
-}
+            var p = document.getElementById("button5");
+            var m = document.getElementById("button9");
+            if (p.style.display == 'block') {
+                span2.innerHTML += '<br> You cannot go any further back!';
+            }
+            else if (m.style.display == 'block') {
+                const x = document.getElementsByClassName("button2");
+                for (let i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                const y = document.getElementsByClassName("button1");
+                for (let i = 0; i < y.length; i++) {
+                    y[i].style.display = "block";
 
-}
+                }
+            }
+
+        }
+        function function12() {
+            timer += 1;
+
+        }
     </script>
 </head>
 
@@ -371,8 +394,8 @@ else if (m.style.display == 'block') {
                     <button id="button1" onclick="function1()"> Guy with screwdriver</button>
                     <button id="button2" onclick="function2()"> Girl with magnet</button>
                     <span id="span1"></span>
-                    <img src="Image/BoyCharater.png" id='characterB' alt="BoyImg" width="140" height="160">
-                    <img src="Image/GirlCharacter.png" id='characterG' alt="GirlImg" width="140" height="160">
+                    <img src="Image/BoyCharacter.jpg" id='characterB' alt="BoyImg" width="140" height="160">
+                    <img src="Image/GirlCharacter.jpg" id='characterG' alt="GirlImg" width="140" height="160">
                 </div>
             </div>
         </div>
