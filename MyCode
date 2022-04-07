@@ -51,6 +51,7 @@
     body {
                 margin: 0;
                 padding: 0;
+                
             }
 .NavigationBox{
     text-align: center;
@@ -111,6 +112,9 @@
 }
 </style>
 <body>
+    <audio autoplay loop>
+        <source src="Audio/Audio.mp3" type="audio/mpeg"/>
+        </audio>
         <div class="NavigationBox"> 
             <h2> Character Info </h2>
             <span id = "spanimagechar"> <img class = "Image"></span>
