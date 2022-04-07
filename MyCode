@@ -89,20 +89,21 @@
 }
 .button1{
     text-align: center;
-      width: 150px;
-      height: 100px;
-  margin-bottom: 14%;
-  margin-top: 14%;
-  margin-left: 15%;
+    width: 150px;
+    height: 100px;
+    margin-bottom: 14%;
+    margin-top: 14%;
+    margin-left: 15%;
+    display: block;
 }
 .button2{
     text-align: center;
-      width: 150px;
-      height: 100px;
-  margin-bottom: 14%;
-  margin-top: 14%;
-  margin-left: 15%;
-  display: none;
+    width: 150px;
+    height: 100px;
+    margin-bottom: 14%;
+    margin-top: 14%;
+    margin-left: 15%;
+    display: none;
 }
 </style>
 
@@ -124,8 +125,8 @@
             <Button id="button5" class="button1" onclick="function5()"> Look at Fish Bowl </Button>
             <Button id="button6" class="button1" onclick="function6()"> Look at Picture </Button>
             <Button id="button7" class="button1" onclick="function7()"> Look at Safe </Button>
-            <Button id="button8" class="button2" onclick=""> Look at Clock </Button>
-            <Button id="button9" class="button2" onclick=""> Look at Fish Bowl </Button>
+            <Button id="button8" class="button2" onclick=""> Look at drain </Button>
+            <Button id="button9" class="button2" onclick=""> Look  </Button>
             <Button id="button10" class="button2" onclick=""> Look at Picture </Button>
             <Button id="button11" class="button2" onclick=""> Look at Safe </Button>
             </div>
@@ -157,7 +158,22 @@
             if (clockClicked && pictureClicked && fishBowlClicked == true) {
             span2.innerHTML += `<br> You try the code 347. The safe opens and you find a torch.`;
             foundItem =true;
-            
+            var x = document.getElementById("button4");
+                x.style.display = "none";
+                var z = document.getElementById("button5");
+                z.style.display = "none";
+                var y = document.getElementById("button6");
+                y.style.display = "none";
+                var n = document.getElementById("button7");
+                n.style.display = "none";
+                var u = document.getElementById("button8");
+                u.style.display = "block";
+                var i = document.getElementById("button9");
+                i.style.display = "block";
+                var m = document.getElementById("button10");
+                m.style.display = "block";
+                var l = document.getElementById("button11");
+                l.style.display = "block";
             }
             else {span2.innerHTML += `<br> You try some random combinations but nothing seems to work.`;} 
         }
@@ -165,6 +181,22 @@
             if (clockClicked && pictureClicked && fishBowlClicked == true) {
             span2.innerHTML += `<br> You try the code 347. The safe opens and you find some string.`;
             foundItem = true;
+            var x = document.getElementById("button4");
+                x.style.display = "none";
+                var z = document.getElementById("button5");
+                z.style.display = "none";
+                var y = document.getElementById("button6");
+                y.style.display = "none";
+                var n = document.getElementById("button7");
+                n.style.display = "none";
+                var u = document.getElementById("button8");
+                u.style.display = "block";
+                var i = document.getElementById("button9");
+                i.style.display = "block";
+                var m = document.getElementById("button10");
+                m.style.display = "block";
+                var l = document.getElementById("button11");
+                l.style.display = "block";
             }
             else {span2.innerHTML += `<br> You try some random combinations but nothing seems to work.`;}
         }
@@ -176,13 +208,13 @@
     <div id = "content1">
         <div id = "b3css">
             <style>
-    
                 #button3
                 {
                     display: none;
                 }
             </style>
             </div>
+        </div>
  <style>
         body{
             margin: 0;
