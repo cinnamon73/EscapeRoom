@@ -120,9 +120,9 @@
             <Button id="button7" class="button1" onclick="function7()"> Inspect Safe </Button>
             <Button id="button12" class="button1" onclick="function10()"> Look at Remote </Button>
             <Button id="button13" class="button1" onclick="function11()"> Inspect door </Button>
-            <Button id="button8" class="button2" onclick=""> Look at drain </Button>
-            <Button id="button9" class="button2" onclick=""> Look at door </Button>
-            <Button id="button10" class="button2" onclick=""> Look at  </Button>
+            <Button id="button8" class="button2" onclick="function13()"> Look at drain </Button>
+            <Button id="button9" class="button2" onclick="function11()"> Look at door </Button>
+            <Button id="button10" class="button2" onclick="function14()"> Combine Items  </Button>
             <Button id="button11" class="button2" onclick=""> Look at  </Button>
             </div>
         </div>
@@ -172,10 +172,12 @@
         function function7() {
             if (charChosen == true) {
                 if (clockClicked && pictureClicked && fishBowlClicked == true) {
-                    span2.innerHTML += `<br> You try the code 347. The safe opens and you find a torch.`;
-                    spanimage.innerHTML = '<img class = "Image" src="Image/Safeopen.jpg">';
-                    spanitem2.innerHTML = '<img src="Image/torch.jpg" alt="torch" width="50" height="60">';
-                    foundItem = true;
+                    if (foundItem == false) {
+                        span2.innerHTML += `<br> You try the code 347. The safe opens and you find a torch. The torch seems to be out of battery.`;
+                        spanimage.innerHTML = '<img class = "Image" src="Image/Safeopen.jpg">';
+                        spanitem2.innerHTML = '<img src="Image/torch.jpg" alt="torch" width="50" height="60">';
+                        foundItem = true;
+                    }
                     const x = document.getElementsByClassName("button1");
                     for (let i = 0; i < x.length; i++) {
                         x[i].style.display = "none";
@@ -194,10 +196,13 @@
             }
             else {
                 if (clockClicked && pictureClicked && fishBowlClicked == true) {
-                    span2.innerHTML += `<br> You try the code 347. The safe opens and you find some string.`;
-                    spanimage.innerHTML = '<img class = "Image" src="Image/Safeopen.jpeg">';
-                    spanitem2.innerHTML = '<img src="Image/string.jpg" alt="string" width="50" height="60">';
-                    foundItem = true;
+                    if (foundItem ==false) {
+                        span2.innerHTML += `<br> You try the code 347. The safe opens and you find some string.`;
+                        spanimage.innerHTML = '<img class = "Image" src="Image/Safeopen.jpeg">';
+                        spanitem2.innerHTML = '<img src="Image/string.jpg" alt="string" width="50" height="60">';
+                        foundItem = true;
+                    }
+
                     const x = document.getElementsByClassName("button1");
                     for (let i = 0; i < x.length; i++) {
                         x[i].style.display = "none";
@@ -227,15 +232,24 @@
                 y[i].style.display = "none";
 
             }
-            span2.innerHTML += `<br> Time has ran out.`;
+            span2.innerHTML += `<br> Game Over`;
         }
 
 
 
+        var batteriesInTorch = false;
         // function that descibes the remote
         function function10() {
-            span2.innerHTML += `<br> You pick up the remote off the desk. You look around the room to see what the remote belongs to but cant see anything. `
+            if (charChosen == true && foundItem == true) {
+            span2.innerHTML += `<br> You pick up the remote off the desk. You take the batteries out of it and luckily they fit your torch. `;
             spanimage.innerHTML = '<img class = "Image" src="Image/remote.jpg">';
+            batteriesInTorch = true;
+            }
+            else {
+            span2.innerHTML += `<br> You pick up the remote off the desk. You look around the room to see what the remote belongs to but cant see anything. `;
+            spanimage.innerHTML = '<img class = "Image" src="Image/remote.jpg">'; 
+            }
+            
         }
         // variable that records whether or not the player has found the key
         var keyFound = false;
@@ -243,6 +257,11 @@
         function function11() {
             if (keyFound == true) {
                 span2.innerHTML += ` <br> Congratulations you have escaped.`;
+                function8();
+                var score = 300-timer;
+                span2.innerHTML +=`<br> Your score is :` + score ;
+                clearTimeout(myTimer);
+
             }
 
             else {
@@ -272,9 +291,33 @@
             }
 
         }
+        //timer function for score
         function function12() {
             timer += 1;
 
+        }
+        function function13() {
+            if (batteriesInTorch == true) {
+                span2.innerHTML += `<br> You shine the torch down the drain and can see a key at the bottom. You then use the screwdriver to lift up the drain cover and reach in and grab the key.`;
+                keyFound = true;
+            }
+            else if (itemsCombined == true) {
+                span2.innerHTML += `<br> You decide to lower the magnet into the drain using the string. You feel it get heavier so you pull it out and there is a key on the end of it.`;
+                keyFound = true;
+            }
+            else {
+                span2.innerHTML += `<br> There is a drain in the floor. Its too dark to see the bottom.`;
+            }
+        }
+        var itemsCombined = false;
+        function function14() {
+            if (charChosen == false && itemsCombined == false) {
+                span2.innerHTML += `<br> You tie the magnet to the string.`;
+                itemsCombined =true;
+            }
+            else {
+                span2.innerHTML += `<br> You cannot combine any of your items.`;
+            }
         }
     </script>
 </head>
