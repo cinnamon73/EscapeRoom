@@ -200,7 +200,7 @@
                 if (clockClicked && pictureClicked && fishBowlClicked == true) {
                     if (foundItem == false) {
                         span2.innerHTML += `<br> You try the code 347. The safe opens and you find a torch. The torch seems to be out of battery.`;
-                        spanimage.innerHTML = '<img class = "Image" src="Image/Safeopen.jpg" alt ="safeopenimg">';
+                        spanimage.innerHTML = '<img class = "Image" src="Image/Safeopen.jpeg" alt ="safeopenimg">';
                         spanitem2.innerHTML = '<img src="Image/torch.jpg" alt="torch" width="50" height="60">';
                         foundItem = true;
                     }
@@ -270,7 +270,7 @@
         function function10() {
             if (charChosen == true && foundItem == true) {
                 span2.innerHTML += `<br> You pick up the remote off the desk. You take the batteries out of it and luckily they fit your torch. `;
-                spanimage.innerHTML = '<img class = "Image" src="Image/remote.jpg alt="remoteimg">';
+                spanimage.innerHTML = '<img class = "Image" src="Image/remote.jpg" alt="remoteimg">';
                 batteriesInTorch = true;
             }
             else {
